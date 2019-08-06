@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="主页"
+        android:id="@+id/id1"
+        android:icon="@drawable/home_bottom_ic_home"
+        />
+    <item
+        android:id="@+id/id2"
+        android:title="喜欢"
+        android:icon="@drawable/like_bottom_ic_like"
+        />
+    <item
+        android:title="我的"
+        android:id="@+id/id3"
+        android:icon="@drawable/people_bottom_ic_people"
+        />
+
+</menu>
