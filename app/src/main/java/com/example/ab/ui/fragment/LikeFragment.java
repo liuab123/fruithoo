@@ -29,7 +29,6 @@ public class LikeFragment extends Fragment {
     //private List<likefruit> likefruitList = new ArrayList<likefruit>();
     private List<LikeFruit> fruits = new LinkedList<>();
     private LikeFruitAdapter mAdapter;
-
     private LikeHelper likeHelper;
     private long userId = -1;
 
@@ -51,8 +50,6 @@ public class LikeFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         return view;
     }
-
-
     @Override
     public void onStart() {
         super.onStart();

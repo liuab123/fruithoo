@@ -28,28 +28,34 @@ public class FruitDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit_detail);
         fruitImage = (ImageView) findViewById(R.id.fruit_image);
-
+        // TODO 做数据库查询 查询指定Id的水果
+        accept();
+        Button btnlike = (Button) findViewById(R.id.btn_like);
+        btnlike.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                // TODO  1. 生成一个收藏记录
+                // 2. 界面返回
+                insert();
+            }
+        }
+        );
+    }
+    private void accept(){
         fruitHelper = new LikeHelper(App.getInstance().getDaoSession().getLikeFruitDao());
-
         Intent intent = getIntent();
         final int sourceid = intent.getIntExtra(FRUIT_ID, 0);
         fruitImage.setImageResource(sourceid);
         final Long id = intent.getLongExtra(dat, 0);
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
         final String userid=pref.getString("account","id");
-        // TODO 做数据库查询 查询指定Id的水果
-
-        Button btnlike = (Button) findViewById(R.id.btn_like);
-        btnlike.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                // TODO  1. 生成一个收藏记录
-                // 2. 界面返回
-
-                fruitHelper.insert(new LikeFruit(id,Long.valueOf(userid),id));
-                Toast.makeText(FruitDetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }
-        );
+    }
+    private void insert(){
+        Intent intent = getIntent();
+        final Long id = intent.getLongExtra(dat, 0);
+        SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
+        final String userid=pref.getString("account","id");
+        fruitHelper.insert(new LikeFruit(id,Long.valueOf(userid),id));
+        Toast.makeText(FruitDetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

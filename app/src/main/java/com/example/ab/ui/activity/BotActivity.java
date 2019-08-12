@@ -28,10 +28,9 @@ public class BotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bot);
-
-
         initFragment();
     }
+
     private void initFragment()
     {
         AllFragment = new AllFragment();
@@ -47,7 +46,6 @@ public class BotActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener changeFragment= new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
             switch (item.getItemId())
             {
                 case R.id.id1:
@@ -65,7 +63,6 @@ public class BotActivity extends AppCompatActivity {
                     {
                         switchFragment(lastfragment,1);
                         lastfragment=1;
-
                     }
                     return true;
                 }
@@ -92,7 +89,5 @@ public class BotActivity extends AppCompatActivity {
             transaction.add(R.id.mainview,fragments[index]);
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
-
     }
-
 }

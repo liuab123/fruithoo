@@ -34,5 +34,4 @@ public class SharedPreferenceUtils {
         SharedPreferences preferences = getSharedPreferences();
         return preferences.getBoolean(key,true);
     }
-
 }

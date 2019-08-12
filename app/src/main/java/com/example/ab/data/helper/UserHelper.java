@@ -21,4 +21,12 @@ public class UserHelper {
                 .where(UserDao.Properties.Id.eq(account),UserDao.Properties.Password.eq(pwd))
                 .unique();
     }
+    public User register(long account,String pwd){
+        return mUserDao.queryBuilder()
+                .where(UserDao.Properties.Id.eq(account))
+                .unique();
+    }
+    public void insert(User user){
+        mUserDao.insertOrReplace(user);
+    }
 }

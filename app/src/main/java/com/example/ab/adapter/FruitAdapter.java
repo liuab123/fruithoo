@@ -29,7 +29,12 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
         mFruitList = fruitList;
         mContext = context;
     }
-
+    public void replaceFruits(List<Fruit> fruits){
+        mFruitList.clear();
+        mFruitList.addAll(fruits);
+        // 进行数据的刷新
+        notifyDataSetChanged();
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);

@@ -24,7 +24,6 @@ public class App extends Application {
         initDbHelp();
     }
 
-
     private void initDbHelp(){
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "recluse-db", null);
         SQLiteDatabase db = helper.getWritableDatabase();

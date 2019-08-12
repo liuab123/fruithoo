@@ -28,21 +28,24 @@ public class AllFragment extends Fragment {
     private List<Fruit> fruitList = new LinkedList<>();
     private View view;
     private int appid;
+    private FruitAdapter mAdapter;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.activity_allfragment,container,false);
-        initFruits();
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        View view = inflater.inflate(R.layout.activity_allfragment, container, false);
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         StaggeredGridLayoutManager layoutManager = new
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        FruitAdapter adapter = new FruitAdapter(fruitList,getContext());
-        recyclerView.setAdapter(adapter);
+        mAdapter = new FruitAdapter(fruitList, getContext());
+        recyclerView.setAdapter(mAdapter);
         return view;
     }
 
-    private void initFruits() {
+    public void onStart() {
+        super.onStart();
         AllHelper helper = new AllHelper(App.getInstance().getDaoSession().getFruitDao());
         appid = 1;
         fruitList = helper.getAllFruitByUserId(appid);
+        mAdapter.replaceFruits(fruitList);
     }
 }

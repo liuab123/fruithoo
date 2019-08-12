@@ -22,7 +22,6 @@ public class UserFragment extends Fragment {
         View view=inflater.inflate(R.layout.activity_userfragment,container,false);
         SharedPreferences pref = getContext().getSharedPreferences("data",MODE_PRIVATE);
         String account=pref.getString("account","id");
-
         Account = (TextView) view.findViewById(R.id.tv_account);
         Account.setText(account);
         return view;
